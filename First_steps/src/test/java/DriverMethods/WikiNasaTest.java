@@ -39,4 +39,28 @@ public class WikiNasaTest {
         String nasaTitle = "NASA";
         Assertions.assertEquals(nasaTitle, driver.getTitle(), "The title of the page is not: " + nasaTitle);
     }
+
+    @Test
+    public void getCurrentURLExample(){
+        String googleURL = "https://www.google.pl/";
+        driver.navigate().to("https://google.pl");
+        Assertions.assertEquals(googleURL, driver.getCurrentUrl(),"Current URL is not " + googleURL);
+    }
+
+    @Test
+    public void getTitleExample(){
+        driver.navigate().to("https://google.pl");
+        String googleTitle = "Google";
+        driver.navigate().to("https://google.pl");
+        Assertions.assertEquals(googleTitle, driver.getTitle(),"Current URL is not " + googleTitle);
+    }
+
+    @Test
+    public void getPagesSourceExample(){
+        driver.navigate().to("https://google.pl");
+        String googleImage = "/images/branding/googleg/1x/googleg_standard_color_128dp.png";
+        driver.navigate().to("https://google.pl");
+        Assertions.assertTrue(driver.getPageSource().contains(googleImage), "Page source does not contain " + googleImage);
+    }
+
 }
